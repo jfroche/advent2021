@@ -43,6 +43,9 @@
             pkgs.rls
             pkgs.jq
           ];
+          shellHook = ''
+            export ADVENT_LOG="actix_web, advent_of_code_2021"
+          '';
         };
 
         packages.${name} = project.rootCrate.build;
