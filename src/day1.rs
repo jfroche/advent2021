@@ -87,3 +87,8 @@ mod tests {
         assert_eq!(&Body::from(json!({ "raw": "5" })), unwrapped_body);
     }
 }
+
+pub fn routes(cfg: &mut web::ServiceConfig) {
+    cfg.service(web::scope("/day1/1").route("", web::post().to(part1)));
+    cfg.service(web::scope("/day1/2").route("", web::post().to(part2)));
+}

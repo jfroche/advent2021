@@ -10,6 +10,8 @@ test:
 fmt:
 	cargo fmt
 
-day1:
-	@curl -s -X POST localhost:4000/day1/1 -H "Content-Type: application/json" --data "@inputs/day1.txt" | jq -r '.raw'
-	@curl -s -X POST localhost:4000/day1/2 -H "Content-Type: application/json" --data "@inputs/day1.txt" | jq -r '.raw'
+day%:
+	@curl -s localhost:4000/$@/1 -H "Content-Type: application/json" --data "@inputs/$@.txt" | jq -r '.raw'
+	@curl -s localhost:4000/$@/2 -H "Content-Type: application/json" --data "@inputs/$@.txt" | jq -r '.raw'
+
+all: day1 day2
