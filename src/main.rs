@@ -15,8 +15,7 @@ mod day2;
 // Instantiate and run the HTTP server
 #[actix_rt::main]
 async fn main() -> io::Result<()> {
-    //env_logger::init_from_env(env_logger::Env::new().default_filter_or("info"));
-    env_logger::from_env(Env::default().filter("ADVENT_LOG"))
+    env_logger::Builder::from_env(Env::default().filter("ADVENT_LOG"))
         .format_timestamp_millis()
         .init();
     // Construct app and configure routes

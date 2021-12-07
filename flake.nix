@@ -4,6 +4,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/release-21.11";
     rust-overlay.url = "github:oxalica/rust-overlay";
+    pre-commit-hooks.url = "github:cachix/pre-commit-hooks.nix";
     flake-utils.url = "github:numtide/flake-utils";
     crate2nix = {
       url = "github:kolloch/crate2nix";
@@ -11,8 +12,8 @@
     };
   };
 
-  outputs = { self, nixpkgs, rust-overlay, flake-utils, crate2nix, ... }:
-    flake-utils.lib.eachDefaultSystem (system:
+  outputs = { self, nixpkgs, rust-overlay, flake-utils, crate2nix, pre-commit-hooks, ... }:
+    flake-utils.lib.eachSystem [ "x86_64-linux" ] (system:
       let
         overlays = [ (import rust-overlay) ];
         name = "advent-of-code-2021";
@@ -44,8 +45,25 @@
             pkgs.jq
           ];
           shellHook = ''
+            ${self.checks.${system}.pre-commit-check.shellHook}
             export ADVENT_LOG="actix_web, advent_of_code_2021"
           '';
+        };
+
+        checks = {
+          pre-commit-check = pre-commit-hooks.lib.${system}.run {
+            src = ./.;
+            hooks = {
+              nixpkgs-fmt.enable = true;
+              rustfmt.enable = true;
+              clippy = {
+                enable = true;
+                entry = lib.mkForce ''
+                  bash -c 'PATH="${rust-bin.nightly.latest.default}/bin:${pkgs.clippy}/bin" cargo clippy -- --deny warnings'
+                '';
+              };
+            };
+          };
         };
 
         packages.${name} = project.rootCrate.build;

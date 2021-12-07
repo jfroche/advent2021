@@ -8,7 +8,10 @@ test:
 	cargo test
 
 fmt:
-	cargo fmt
+	rustfmt --edition 2021 src/*.rs
+
+lint:
+	pre-commit run --all
 
 day%:
 	@curl -s localhost:4000/$@/1 -H "Content-Type: application/json" --data "@inputs/$@.txt" | jq -r '.raw'

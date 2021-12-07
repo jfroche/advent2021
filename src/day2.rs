@@ -11,15 +11,9 @@ pub async fn part1(puzzle: web::Json<Puzzle>) -> HttpResponse {
             let action = o[0].to_string();
             let quantity = o[1].parse::<i32>().unwrap();
             match action.as_ref() {
-                "forward" => {
-                    return (quantity, 0);
-                }
-                "down" => {
-                    return (0, quantity);
-                }
-                "up" => {
-                    return (0, -quantity);
-                }
+                "forward" => (quantity, 0),
+                "down" => (0, quantity),
+                "up" => (0, -quantity),
                 _ => panic!("Invalid action"),
             }
         })
@@ -43,15 +37,9 @@ pub async fn part2(puzzle: web::Json<Puzzle>) -> HttpResponse {
             let action = o[0].to_string();
             let quantity = o[1].parse::<i32>().unwrap();
             match action.as_ref() {
-                "forward" => {
-                    return (quantity, 0);
-                }
-                "down" => {
-                    return (0, quantity);
-                }
-                "up" => {
-                    return (0, -quantity);
-                }
+                "forward" => (quantity, 0),
+                "down" => (0, quantity),
+                "up" => (0, -quantity),
                 _ => panic!("Invalid action"),
             }
         })
