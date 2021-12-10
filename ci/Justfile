@@ -1,0 +1,7 @@
+# Generate github actions workflows
+generate:
+  cue cmd genworkflows
+
+# Import github action schema
+vendor:
+  cue cmd vendorgithubschema ./schema

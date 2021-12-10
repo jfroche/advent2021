@@ -40,6 +40,10 @@
           buildInputs = [
             rust-bin.nightly.latest.default
             pkgs.rust-analyzer
+            pkgs.go
+            pkgs.cue
+            pkgs.just
+            pkgs.gnumake
             pkgs.clippy
             pkgs.rls
             pkgs.jq
