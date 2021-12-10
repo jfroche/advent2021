@@ -13,7 +13,7 @@
   };
 
   outputs = { self, nixpkgs, rust-overlay, flake-utils, crate2nix, pre-commit-hooks, ... }:
-    flake-utils.lib.eachSystem [ "x86_64-linux" ] (system:
+    flake-utils.lib.eachSystem [ "x86_64-linux" "x86_64-darwin" ] (system:
       let
         overlays = [ (import rust-overlay) ];
         name = "advent-of-code-2021";
