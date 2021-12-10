@@ -1,0 +1,196 @@
+# cuelang.org/go v0.4.0
+## explicit
+cuelang.org/go/cmd/cue
+cuelang.org/go/cmd/cue/cmd
+cuelang.org/go/cue
+cuelang.org/go/cue/ast
+cuelang.org/go/cue/ast/astutil
+cuelang.org/go/cue/build
+cuelang.org/go/cue/cuecontext
+cuelang.org/go/cue/errors
+cuelang.org/go/cue/format
+cuelang.org/go/cue/literal
+cuelang.org/go/cue/load
+cuelang.org/go/cue/parser
+cuelang.org/go/cue/scanner
+cuelang.org/go/cue/token
+cuelang.org/go/encoding/gocode/gocodec
+cuelang.org/go/encoding/json
+cuelang.org/go/encoding/jsonschema
+cuelang.org/go/encoding/openapi
+cuelang.org/go/encoding/protobuf
+cuelang.org/go/encoding/protobuf/jsonpb
+cuelang.org/go/encoding/protobuf/pbinternal
+cuelang.org/go/encoding/protobuf/textproto
+cuelang.org/go/internal
+cuelang.org/go/internal/astinternal
+cuelang.org/go/internal/cli
+cuelang.org/go/internal/core/adt
+cuelang.org/go/internal/core/compile
+cuelang.org/go/internal/core/convert
+cuelang.org/go/internal/core/debug
+cuelang.org/go/internal/core/dep
+cuelang.org/go/internal/core/eval
+cuelang.org/go/internal/core/export
+cuelang.org/go/internal/core/runtime
+cuelang.org/go/internal/core/subsume
+cuelang.org/go/internal/core/validate
+cuelang.org/go/internal/core/walk
+cuelang.org/go/internal/diff
+cuelang.org/go/internal/encoding
+cuelang.org/go/internal/encoding/json
+cuelang.org/go/internal/encoding/yaml
+cuelang.org/go/internal/filetypes
+cuelang.org/go/internal/source
+cuelang.org/go/internal/task
+cuelang.org/go/internal/third_party/yaml
+cuelang.org/go/internal/types
+cuelang.org/go/internal/value
+cuelang.org/go/pkg
+cuelang.org/go/pkg/crypto/hmac
+cuelang.org/go/pkg/crypto/md5
+cuelang.org/go/pkg/crypto/sha1
+cuelang.org/go/pkg/crypto/sha256
+cuelang.org/go/pkg/crypto/sha512
+cuelang.org/go/pkg/encoding/base64
+cuelang.org/go/pkg/encoding/csv
+cuelang.org/go/pkg/encoding/hex
+cuelang.org/go/pkg/encoding/json
+cuelang.org/go/pkg/encoding/yaml
+cuelang.org/go/pkg/html
+cuelang.org/go/pkg/internal
+cuelang.org/go/pkg/list
+cuelang.org/go/pkg/math
+cuelang.org/go/pkg/math/bits
+cuelang.org/go/pkg/net
+cuelang.org/go/pkg/path
+cuelang.org/go/pkg/regexp
+cuelang.org/go/pkg/strconv
+cuelang.org/go/pkg/strings
+cuelang.org/go/pkg/struct
+cuelang.org/go/pkg/text/tabwriter
+cuelang.org/go/pkg/text/template
+cuelang.org/go/pkg/time
+cuelang.org/go/pkg/tool
+cuelang.org/go/pkg/tool/cli
+cuelang.org/go/pkg/tool/exec
+cuelang.org/go/pkg/tool/file
+cuelang.org/go/pkg/tool/http
+cuelang.org/go/pkg/tool/os
+cuelang.org/go/pkg/uuid
+cuelang.org/go/tools/fix
+cuelang.org/go/tools/flow
+cuelang.org/go/tools/trim
+# github.com/BurntSushi/toml v0.3.1
+## explicit
+github.com/BurntSushi/toml
+# github.com/cockroachdb/apd/v2 v2.0.1
+## explicit
+github.com/cockroachdb/apd/v2
+# github.com/emicklei/proto v1.6.15
+## explicit
+github.com/emicklei/proto
+# github.com/golang/glog v0.0.0-20160126235308-23def4e6c14b
+## explicit
+github.com/golang/glog
+# github.com/google/uuid v1.2.0
+## explicit
+github.com/google/uuid
+# github.com/inconshreveable/mousetrap v1.0.0
+github.com/inconshreveable/mousetrap
+# github.com/mpvl/unique v0.0.0-20150818121801-cbe035fff7de
+## explicit
+github.com/mpvl/unique
+# github.com/pkg/errors v0.8.1
+github.com/pkg/errors
+# github.com/protocolbuffers/txtpbfmt v0.0.0-20201118171849-f6a6b3f636fc
+## explicit
+github.com/protocolbuffers/txtpbfmt/ast
+github.com/protocolbuffers/txtpbfmt/parser
+github.com/protocolbuffers/txtpbfmt/unquote
+# github.com/rogpeppe/go-internal v1.8.0
+## explicit
+# github.com/spf13/cobra v1.0.0
+## explicit
+github.com/spf13/cobra
+# github.com/spf13/pflag v1.0.3
+## explicit
+github.com/spf13/pflag
+# golang.org/x/mod v0.3.1-0.20200828183125-ce943fd02449
+## explicit
+golang.org/x/mod/semver
+# golang.org/x/net v0.0.0-20200226121028-0de0cce0169b
+## explicit
+golang.org/x/net/idna
+# golang.org/x/text v0.3.2
+## explicit
+golang.org/x/text/encoding
+golang.org/x/text/encoding/internal
+golang.org/x/text/encoding/internal/identifier
+golang.org/x/text/encoding/unicode
+golang.org/x/text/feature/plural
+golang.org/x/text/internal
+golang.org/x/text/internal/catmsg
+golang.org/x/text/internal/format
+golang.org/x/text/internal/language
+golang.org/x/text/internal/language/compact
+golang.org/x/text/internal/number
+golang.org/x/text/internal/stringset
+golang.org/x/text/internal/tag
+golang.org/x/text/internal/utf8internal
+golang.org/x/text/language
+golang.org/x/text/message
+golang.org/x/text/message/catalog
+golang.org/x/text/runes
+golang.org/x/text/secure/bidirule
+golang.org/x/text/transform
+golang.org/x/text/unicode/bidi
+golang.org/x/text/unicode/norm
+# golang.org/x/tools v0.0.0-20200612220849-54c614fe050c
+## explicit
+golang.org/x/tools/go/ast/astutil
+golang.org/x/tools/go/buildutil
+golang.org/x/tools/go/gcexportdata
+golang.org/x/tools/go/internal/cgo
+golang.org/x/tools/go/internal/gcimporter
+golang.org/x/tools/go/internal/packagesdriver
+golang.org/x/tools/go/loader
+golang.org/x/tools/go/packages
+golang.org/x/tools/go/types/typeutil
+golang.org/x/tools/internal/event
+golang.org/x/tools/internal/event/core
+golang.org/x/tools/internal/event/keys
+golang.org/x/tools/internal/event/label
+golang.org/x/tools/internal/gocommand
+golang.org/x/tools/internal/packagesinternal
+golang.org/x/tools/internal/typesinternal
+# golang.org/x/xerrors v0.0.0-20191204190536-9bdfabe68543
+## explicit
+golang.org/x/xerrors
+golang.org/x/xerrors/internal
+# gopkg.in/yaml.v3 v3.0.0-20200121175148-a6ecf24a6d71
+## explicit
+gopkg.in/yaml.v3
+# honnef.co/go/tools v0.0.0-20190102054323-c2f93a96b099
+## explicit
+honnef.co/go/tools/arg
+honnef.co/go/tools/callgraph
+honnef.co/go/tools/callgraph/static
+honnef.co/go/tools/cmd/staticcheck
+honnef.co/go/tools/config
+honnef.co/go/tools/deprecated
+honnef.co/go/tools/functions
+honnef.co/go/tools/internal/sharedcheck
+honnef.co/go/tools/lint
+honnef.co/go/tools/lint/lintdsl
+honnef.co/go/tools/lint/lintutil
+honnef.co/go/tools/lint/lintutil/format
+honnef.co/go/tools/simple
+honnef.co/go/tools/ssa
+honnef.co/go/tools/ssa/ssautil
+honnef.co/go/tools/ssautil
+honnef.co/go/tools/staticcheck
+honnef.co/go/tools/staticcheck/vrp
+honnef.co/go/tools/stylecheck
+honnef.co/go/tools/unused
+honnef.co/go/tools/version
