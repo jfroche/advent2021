@@ -65,7 +65,7 @@ _#step: ((_#job & {steps:                 _}).steps & [_])[0]
 _#linuxMachine: "ubuntu-20.04"
 _#macosMachine: "macos-11"
 
-_#runMakeInNixShell: "nix develop -c make "
+_#runMakeInNixShell: "nix develop --ignore-environment -c make "
 
 _#testStrategy: {
 	"fail-fast": false

@@ -38,8 +38,9 @@
       rec {
         devShell = mkShell {
           buildInputs = [
-            rust-bin.nightly.latest.default
+            rust-bin.nightly."2021-12-06".default
             pkgs.rust-analyzer
+            pkgs.gcc-unwrapped
             pkgs.go
             pkgs.cue
             pkgs.just
@@ -47,9 +48,11 @@
             pkgs.clippy
             pkgs.rls
             pkgs.jq
+            pkgs.git
           ];
           shellHook = ''
             ${self.checks.${system}.pre-commit-check.shellHook}
+            export RUSTFLAGS="-C target-feature=-crt-static"
             export ADVENT_LOG="actix_web, advent_of_code_2021"
           '';
         };
@@ -63,7 +66,7 @@
               clippy = {
                 enable = true;
                 entry = lib.mkForce ''
-                  bash -c 'PATH="${rust-bin.nightly.latest.default}/bin:${pkgs.clippy}/bin" cargo clippy -- --deny warnings'
+                  bash -c 'PATH="${pkgs.binutils.bintools}/bin:${pkgs.gcc-unwrapped}/bin:${rust-bin.nightly."2021-12-06".default}/bin:${pkgs.clippy}/bin:$PATH" cargo clippy -- --deny warnings'
                 '';
               };
             };
