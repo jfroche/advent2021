@@ -1,5 +1,13 @@
+.PHONY: ci
+
 build:
 	nix build
+
+build-image:
+	nix build .#dockerImage
+
+load-image: build-image
+	docker load -i "$(shell nix path-info -L '.#dockerImage')"
 
 run:
 	nix run
@@ -13,7 +21,7 @@ fmt:
 lint:
 	pre-commit run --all
 
-update-github-actions:
+ci:
 	cd ci && just
 
 clean:

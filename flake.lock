@@ -3,15 +3,16 @@
     "crate2nix": {
       "flake": false,
       "locked": {
-        "lastModified": 1636316693,
-        "narHash": "sha256-WAxxfqPcFY2SFkgbUMnxMAIj3WbFf7Kw3622rYcz22I=",
-        "owner": "kolloch",
+        "lastModified": 1636361151,
+        "narHash": "sha256-PCyoPHYRG4gtgfBuk+N6qcPbc8EvooLBQ4tfeQjrjx0=",
+        "owner": "balsoft",
         "repo": "crate2nix",
-        "rev": "d0c00673bafbaa648e84fb7595a0e4cd84c3b18a",
+        "rev": "08c87b1883cfc554a506cdfcbaa487b189cbbd22",
         "type": "github"
       },
       "original": {
-        "owner": "kolloch",
+        "owner": "balsoft",
+        "ref": "balsoft/fix-broken-ifd",
         "repo": "crate2nix",
         "type": "github"
       }
@@ -61,13 +62,28 @@
         "type": "github"
       }
     },
+    "nix-filter": {
+      "locked": {
+        "lastModified": 1620202920,
+        "narHash": "sha256-BOkm3eKT45Dk4NNxJT0xL9NnyYeZcF+t79zPnJkggac=",
+        "owner": "numtide",
+        "repo": "nix-filter",
+        "rev": "3c9e33ed627e009428197b07216613206f06ed80",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "nix-filter",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1639171978,
-        "narHash": "sha256-vVUol1eq/ic53ADbIRWOqti/iPg4rRoNpGJO5UppqHE=",
+        "lastModified": 1639257596,
+        "narHash": "sha256-TSdp1kru9+5AzR4K4MIWsyOVJFWQstGXM3JmqPS+OI0=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "ee86a9620a04f286f6dc4e5ec81505d1452f9569",
+        "rev": "e372f86e2e6503c3167a81bfc9d730159a40227f",
         "type": "github"
       },
       "original": {
@@ -130,6 +146,7 @@
       "inputs": {
         "crate2nix": "crate2nix",
         "flake-utils": "flake-utils",
+        "nix-filter": "nix-filter",
         "nixpkgs": "nixpkgs",
         "pre-commit-hooks": "pre-commit-hooks",
         "rust-overlay": "rust-overlay"

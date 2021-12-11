@@ -27,5 +27,5 @@ async fn main() -> io::Result<()> {
     };
     // Start HTTP server
     info!("Starting web server");
-    HttpServer::new(app).bind("127.0.0.1:4000")?.run().await
+    HttpServer::new(app).bind("0.0.0.0:4000")?.run().await
 }

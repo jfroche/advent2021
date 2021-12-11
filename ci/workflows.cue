@@ -15,7 +15,34 @@ workflows: [
 		file:   "test.yml"
 		schema: test
 	},
+	{
+		file:   "docker.yml"
+		schema: docker
+	},
+
 ]
+docker: _#bashWorkflow & {
+
+	name: "Docker"
+	on: {
+		push: {
+			branches: ["**"]
+			"tags-ignore": [_#releaseTagPattern]
+		}
+		pull_request: {}
+	}
+	jobs: {
+		build: {
+			"runs-on": _#linuxMachine
+			steps: [
+				_#installNix,
+				_#checkoutCode,
+				_#loadDockerImage,
+				_#cleanupGit,
+			]
+		}
+	}
+}
 
 test: _#bashWorkflow & {
 
@@ -97,4 +124,9 @@ _#runTest: _#step & {
 _#runLint: _#step & {
 	name: "Lint"
 	run:  _#runMakeInNixShell + "lint"
+}
+
+_#loadDockerImage: _#step & {
+	name: "Load docker image"
+	run:  "make load-image"
 }
