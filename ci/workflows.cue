@@ -21,10 +21,16 @@ workflows: [
 	},
 
 ]
+
 docker: _#bashWorkflow & {
 
 	name: "Docker"
 	on: {
+		workflow_run: {
+			workflows: ["Tests"]
+			branches: ["main"]
+			types: ["completed"]
+		}
 		push: {
 			branches: ["**"]
 			"tags-ignore": [_#releaseTagPattern]
@@ -57,8 +63,7 @@ test: _#bashWorkflow & {
 
 	jobs: {
 		lint: {
-			strategy:  _#testStrategy
-			"runs-on": "${{ matrix.os }}"
+			"runs-on": _#linuxMachine
 			steps: [
 				_#installNix,
 				_#checkoutCode,
@@ -67,8 +72,7 @@ test: _#bashWorkflow & {
 			]
 		}
 		test: {
-			strategy:  _#testStrategy
-			"runs-on": "${{ matrix.os }}"
+			"runs-on": _#linuxMachine
 			steps: [
 				_#installNix,
 				_#checkoutCode,

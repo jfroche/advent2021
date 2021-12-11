@@ -10,13 +10,7 @@ on:
   pull_request: {}
 jobs:
   lint:
-    strategy:
-      fail-fast: false
-      matrix:
-        os:
-        - ubuntu-20.04
-        - macos-11
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-20.04
     defaults:
       run:
         shell: bash
@@ -30,13 +24,7 @@ jobs:
     - name: Check clean checkout
       uses: numtide/clean-git-action@v1
   test:
-    strategy:
-      fail-fast: false
-      matrix:
-        os:
-        - ubuntu-20.04
-        - macos-11
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-20.04
     defaults:
       run:
         shell: bash
