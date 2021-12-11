@@ -42,6 +42,7 @@ docker: _#bashWorkflow & {
 			"runs-on": _#linuxMachine
 			steps: [
 				_#installNix,
+				_#installCachix,
 				_#checkoutCode,
 				_#loadDockerImage,
 				_#cleanupGit,
@@ -66,6 +67,7 @@ test: _#bashWorkflow & {
 			"runs-on": _#linuxMachine
 			steps: [
 				_#installNix,
+				_#installCachix,
 				_#checkoutCode,
 				_#runLint,
 				_#cleanupGit,
@@ -118,6 +120,16 @@ _#cleanupGit: _#step & {
 _#installNix: _#step & {
 	name: "Install nix"
 	uses: "cachix/install-nix-action@v16"
+}
+
+_#installCachix: _#step & {
+	name: "Install cachix"
+	uses: "cachix/cachix-action@v10"
+	with: {
+		name:           "advent-2021"
+		authToken:      "${{ secrets.CACHIX_AUTH_TOKEN }}"
+		extraPullNames: "nix-community"
+	}
 }
 
 _#runTest: _#step & {
