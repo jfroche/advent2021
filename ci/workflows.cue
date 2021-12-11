@@ -31,11 +31,6 @@ docker: _#bashWorkflow & {
 			branches: ["main"]
 			types: ["completed"]
 		}
-		push: {
-			branches: ["**"]
-			"tags-ignore": [_#releaseTagPattern]
-		}
-		pull_request: {}
 	}
 	jobs: {
 		build: {
