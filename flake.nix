@@ -65,7 +65,6 @@
           pkgs.cue
           pkgs.just
           pkgs.gnumake
-          pkgs.clippy
           pkgs.rls
           pkgs.jq
           pkgs.git
@@ -91,7 +90,7 @@
               pass_filenames = false;
             };
             clippy = {
-              enable = true;
+              enable = false;
               entry = lib.mkForce ''
                 bash -c 'PATH="${pkgs.binutils.bintools}/bin:${pkgs.gcc-unwrapped}/bin:${rust-bin.nightly."2021-12-06".default}/bin:${pkgs.clippy}/bin:$PATH" cargo clippy -- --deny warnings'
               '';
