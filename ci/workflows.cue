@@ -127,6 +127,7 @@ _#installCachix: _#step & {
 		name:           "advent-2021"
 		authToken:      "${{ secrets.CACHIX_AUTH_TOKEN }}"
 		extraPullNames: "nix-community"
+		pushFilter:     "(-source$)"
 	}
 }
 

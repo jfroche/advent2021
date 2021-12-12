@@ -23,6 +23,7 @@ jobs:
         name: advent-2021
         authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
         extraPullNames: nix-community
+        pushFilter: (-source$)
     - name: Checkout code
       uses: actions/checkout@v2
     - name: Lint
@@ -43,6 +44,7 @@ jobs:
         name: advent-2021
         authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
         extraPullNames: nix-community
+        pushFilter: (-source$)
     - name: Checkout code
       uses: actions/checkout@v2
     - name: Test
