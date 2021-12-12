@@ -1,0 +1,21 @@
+[formatter.nix]
+command = "nixpkgs-fmt"
+includes = ["*.nix"]
+
+[formatter.rust]
+command = "rustfmt"
+options = ["--edition", "2021"]
+includes = ["*.rs"]
+
+[formatter.cue]
+command = "cue"
+options = ["fmt"]
+includes = ["ci/*.cue"]
+excludes = ["ci/vendor/*", "ci/schema/*"]
+
+[formatter.prettier]
+command = "prettier"
+options = ["--write"]
+includes = [
+    "*.js",
+]

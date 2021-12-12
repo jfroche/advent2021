@@ -9,6 +9,27 @@ on:
     - v*
   pull_request: {}
 jobs:
+  fmt:
+    runs-on: ubuntu-20.04
+    defaults:
+      run:
+        shell: bash
+    steps:
+    - name: Install nix
+      uses: cachix/install-nix-action@v16
+    - name: Install cachix
+      uses: cachix/cachix-action@v10
+      with:
+        name: advent-2021
+        authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
+        extraPullNames: nix-community
+        pushFilter: (-source$)
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Check fmt
+      run: nix develop --ignore-environment -c treefmt --fail-on-change
+    - name: Check clean checkout
+      uses: numtide/clean-git-action@v1
   lint:
     runs-on: ubuntu-20.04
     defaults:

@@ -60,6 +60,16 @@ test: _#bashWorkflow & {
 	}
 
 	jobs: {
+		fmt: {
+			"runs-on": _#linuxMachine
+			steps: [
+				_#installNix,
+				_#installCachix,
+				_#checkoutCode,
+				_#runFmt,
+				_#cleanupGit,
+			]
+		}
 		lint: {
 			"runs-on": _#linuxMachine
 			steps: [
@@ -96,7 +106,9 @@ _#step: ((_#job & {steps:                 _}).steps & [_])[0]
 _#linuxMachine: "ubuntu-20.04"
 _#macosMachine: "macos-11"
 
-_#runMakeInNixShell: "nix develop --ignore-environment -c make "
+_#runInNixShell: "nix develop --ignore-environment -c "
+
+_#runMakeInNixShell: _#runInNixShell + "make "
 
 _#testStrategy: {
 	"fail-fast": false
@@ -167,6 +179,11 @@ _#runTestWithNix: _#step & {
 _#runLint: _#step & {
 	name: "Lint"
 	run:  _#runMakeInNixShell + "lint"
+}
+
+_#runFmt: _#step & {
+	name: "Check fmt"
+	run:  _#runInNixShell + "treefmt --fail-on-change"
 }
 
 _#loadDockerImage: _#step & {
