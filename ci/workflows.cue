@@ -35,6 +35,7 @@ docker: _#bashWorkflow & {
 	jobs: {
 		build: {
 			"runs-on": _#linuxMachine
+			"if":      "${{ github.event.workflow_run.conclusion == 'success' }}"
 			steps: [
 				_#installNix,
 				_#installCachix,
@@ -73,8 +74,9 @@ test: _#bashWorkflow & {
 			"runs-on": _#linuxMachine
 			steps: [
 				_#installNix,
+				_#installCachix,
 				_#checkoutCode,
-				_#runTest,
+				_#runTestWithNix,
 				_#cleanupGit,
 			]
 		}
@@ -141,17 +143,24 @@ _#loginDockerRegistry: _#step & {
 _#publishImage: _#step & {
 	name: "Publish docker image"
 	run: """
-		IMAGE_NAME="jfroche/$(echo "$GITHUB_REPOSITORY"):${GITHUB_SHA}"
-		IMAGE_NAME_LATEST="jfroche/$(echo "$GITHUB_REPOSITORY"):latest"
-		docker tag $IMAGE_NAME_LATEST $IMAGE_NAME
-		docker push "ghcr.io/$IMAGE_NAME"
-		docker push "ghcr.io/$IMAGE_NAME_LATEST"
+		LOADED_IMAGE="${GITHUB_REPOSITORY#*/}:latest"
+		IMAGE_NAME="ghcr.io/$(echo "$GITHUB_REPOSITORY"):${GITHUB_SHA}"
+		IMAGE_NAME_LATEST="ghrc.io/$(echo "$GITHUB_REPOSITORY"):latest"
+		docker tag $LOADED_IMAGE $IMAGE_NAME
+		docker tag $LOADED_IMAGE $IMAGE_NAME_LATEST
+		docker push "$IMAGE_NAME"
+		docker push "$IMAGE_NAME_LATEST"
 		"""
 }
 
 _#runTest: _#step & {
 	name: "Test"
 	run:  _#runMakeInNixShell + "test"
+}
+
+_#runTestWithNix: _#step & {
+	name: "Test"
+	run:  "make build"
 }
 
 _#runLint: _#step & {

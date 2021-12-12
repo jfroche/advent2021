@@ -99,7 +99,9 @@
         };
       };
 
-      packages.${name} = project.rootCrate.build;
+      packages.${name} = project.rootCrate.build.override {
+        runTests = true;
+      };
 
       # `nix build`
       defaultPackage = self.packages.${system}.${name};
