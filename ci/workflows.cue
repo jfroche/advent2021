@@ -40,6 +40,7 @@ docker: _#bashWorkflow & {
 				_#installCachix,
 				_#checkoutCode,
 				_#loadDockerImage,
+				_#publishImage,
 				_#cleanupGit,
 			]
 		}
@@ -125,6 +126,27 @@ _#installCachix: _#step & {
 		authToken:      "${{ secrets.CACHIX_AUTH_TOKEN }}"
 		extraPullNames: "nix-community"
 	}
+}
+
+_#loginDockerRegistry: _#step & {
+	name: "Login on docker registry"
+	uses: "docker/login-action@v1"
+	with: {
+		registry: "ghcr.io"
+		username: "${{ github.actor }}"
+		password: "${{ secrets.GITHUB_TOKEN }}"
+	}
+}
+
+_#publishImage: _#step & {
+	name: "Publish docker image"
+	run: """
+		IMAGE_NAME="jfroche/$(echo "$GITHUB_REPOSITORY"):${GITHUB_SHA}"
+		IMAGE_NAME_LATEST="jfroche/$(echo "$GITHUB_REPOSITORY"):latest"
+		docker tag $IMAGE_NAME_LATEST $IMAGE_NAME
+		docker push "ghcr.io/$IMAGE_NAME"
+		docker push "ghcr.io/$IMAGE_NAME_LATEST"
+		"""
 }
 
 _#runTest: _#step & {

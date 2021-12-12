@@ -28,5 +28,12 @@ jobs:
       uses: actions/checkout@v2
     - name: Load docker image
       run: make load-image
+    - name: Publish docker image
+      run: |-
+        IMAGE_NAME="jfroche/$(echo "$GITHUB_REPOSITORY"):${GITHUB_SHA}"
+        IMAGE_NAME_LATEST="jfroche/$(echo "$GITHUB_REPOSITORY"):latest"
+        docker tag $IMAGE_NAME_LATEST $IMAGE_NAME
+        docker push "ghcr.io/$IMAGE_NAME"
+        docker push "ghcr.io/$IMAGE_NAME_LATEST"
     - name: Check clean checkout
       uses: numtide/clean-git-action@v1

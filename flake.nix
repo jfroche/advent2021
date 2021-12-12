@@ -111,7 +111,7 @@
       };
       defaultApp = apps.${name};
       packages.dockerImage = pkgs.dockerTools.buildLayeredImage {
-        name = "advent-of-code-2021";
+        name = "advent2021";
         tag = "latest";
 
         config = {
