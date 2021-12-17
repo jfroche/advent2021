@@ -91,9 +91,9 @@
               pass_filenames = false;
             };
             clippy = {
-              enable = false;
+              enable = true;
               entry = lib.mkForce ''
-                bash -c 'PATH="${pkgs.binutils.bintools}/bin:${pkgs.gcc-unwrapped}/bin:${rust-bin.nightly."2021-12-06".default}/bin:${pkgs.clippy}/bin:$PATH" cargo clippy -- --deny warnings'
+                cargo clippy -- --deny warnings
               '';
             };
           };
