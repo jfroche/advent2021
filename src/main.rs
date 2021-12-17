@@ -12,6 +12,9 @@ mod day1;
 #[path = "day2.rs"]
 mod day2;
 
+#[path = "day3.rs"]
+mod day3;
+
 // Instantiate and run the HTTP server
 #[actix_rt::main]
 async fn main() -> io::Result<()> {
@@ -23,6 +26,7 @@ async fn main() -> io::Result<()> {
         App::new()
             .configure(day1::routes)
             .configure(day2::routes)
+            .configure(day3::routes)
             .wrap(Logger::default())
     };
     // Start HTTP server
