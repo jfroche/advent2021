@@ -12,3 +12,4 @@ jobs:
           token: ${{ secrets.PAT }}
           commands: example
           repository: jfroche/advent2021
+          dispatch-type: workflow
