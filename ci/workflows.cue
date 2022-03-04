@@ -90,7 +90,18 @@ test: _#bashWorkflow & {
 				_#cleanupGit,
 			]
 		}
-
+		"test-cached-cargo": {
+			"runs-on": _#linuxMachine
+			steps: [
+				_#installNix,
+				_#installCachix,
+				_#checkoutCode,
+				_#cacheCargoRegistry,
+				_#cacheCargoTarget,
+				_#runTest,
+				_#cleanupGit,
+			]
+		}
 	}
 }
 
@@ -189,4 +200,23 @@ _#runFmt: _#step & {
 _#loadDockerImage: _#step & {
 	name: "Load docker image"
 	run:  "make load-image"
+}
+
+_#cacheCargoRegistry: _#step & {
+	name: "Cache cargo registry"
+	uses: "actions/cache@v2"
+	with: {
+		path: "~/.cargo"
+		key:  "cargo-registry-${{ hashFiles('**/Cargo.lock') }}"
+	}
+}
+
+_#cacheCargoTarget: _#step & {
+	name: "Cache cargo target"
+	uses: "actions/cache@v2"
+	with: {
+		path: "target"
+		key:  "cargo-target-${{ hashFiles('**/Cargo.lock') }}"
+	}
+
 }
