@@ -168,10 +168,10 @@ _#publishImage: _#step & {
 	name: "Publish docker image"
 	run: """
 		LOADED_IMAGE="${GITHUB_REPOSITORY#*/}:latest"
-		IMAGE_NAME="ghcr.io/$(echo "$GITHUB_REPOSITORY"):${GITHUB_SHA}"
-		IMAGE_NAME_LATEST="ghrc.io/$(echo "$GITHUB_REPOSITORY"):latest"
-		docker tag $LOADED_IMAGE $IMAGE_NAME
-		docker tag $LOADED_IMAGE $IMAGE_NAME_LATEST
+		IMAGE_NAME="ghcr.io/$GITHUB_REPOSITORY:${GITHUB_SHA}"
+		IMAGE_NAME_LATEST="ghrc.io/$GITHUB_REPOSITORY:latest"
+		docker tag "$LOADED_IMAGE" "$IMAGE_NAME"
+		docker tag "$LOADED_IMAGE" "$IMAGE_NAME_LATEST"
 		docker push "$IMAGE_NAME"
 		docker push "$IMAGE_NAME_LATEST"
 		"""

@@ -1,6 +1,7 @@
 # Generate github actions workflows
 generate:
   cue cmd genworkflows
+  actionlint
 
 # Import github action schema
 vendor:

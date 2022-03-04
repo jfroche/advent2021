@@ -71,6 +71,8 @@
           pkgs.treefmt
           pkgs.nixpkgs-fmt
           pkgs.nodePackages.prettier
+          pkgs.actionlint
+          pkgs.shellcheck
         ];
         shellHook = ''
           ${self.checks.${system}.pre-commit-check.shellHook}
