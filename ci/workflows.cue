@@ -114,7 +114,7 @@ _#bashWorkflow: json.#Workflow & {
 _#job:  ((json.#Workflow & {}).jobs & {x: _}).x
 _#step: ((_#job & {steps:                 _}).steps & [_])[0]
 
-_#linuxMachine: "ubuntu-20.04"
+_#linuxMachine: "self-hosted"
 _#macosMachine: "macos-11"
 
 _#runInNixShell: "nix develop --ignore-environment -c "

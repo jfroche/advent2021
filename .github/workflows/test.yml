@@ -10,7 +10,7 @@ on:
   pull_request: {}
 jobs:
   fmt:
-    runs-on: ubuntu-20.04
+    runs-on: self-hosted
     defaults:
       run:
         shell: bash
@@ -31,7 +31,7 @@ jobs:
     - name: Check clean checkout
       uses: numtide/clean-git-action@v1
   lint:
-    runs-on: ubuntu-20.04
+    runs-on: self-hosted
     defaults:
       run:
         shell: bash
@@ -52,7 +52,7 @@ jobs:
     - name: Check clean checkout
       uses: numtide/clean-git-action@v1
   test:
-    runs-on: ubuntu-20.04
+    runs-on: self-hosted
     defaults:
       run:
         shell: bash
@@ -73,7 +73,7 @@ jobs:
     - name: Check clean checkout
       uses: numtide/clean-git-action@v1
   test-cached-cargo:
-    runs-on: ubuntu-20.04
+    runs-on: self-hosted
     defaults:
       run:
         shell: bash
