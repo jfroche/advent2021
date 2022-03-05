@@ -25,9 +25,9 @@ pub async fn part1(puzzle: web::Json<Puzzle>) -> HttpResponse {
         });
     let gamma_rate_binary: String = report.iter().fold(String::from(""), |mut accum, column| {
         if (*column as usize) > (puzzle_size - (*column as usize)) {
-            accum.push_str("1")
+            accum.push('1')
         } else {
-            accum.push_str("0")
+            accum.push('0')
         }
         accum
     });
