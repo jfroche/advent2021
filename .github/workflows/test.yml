@@ -93,12 +93,12 @@ jobs:
       uses: actions/cache@v2
       with:
         path: ~/.cargo
-        key: cargo-registry-${{ hashFiles('**/Cargo.lock') }}
+        key: cargo-registry-${{ hashFiles('/Cargo.lock') }}
     - name: Cache cargo target
       uses: actions/cache@v2
       with:
         path: target
-        key: cargo-target-${{ hashFiles('**/Cargo.lock') }}
+        key: cargo-target-${{ hashFiles('/Cargo.lock') }}
     - name: Test
       run: nix develop --ignore-environment -c make test
     - name: Check clean checkout
